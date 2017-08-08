@@ -45,6 +45,5 @@ $dcip3
 #grabs adapter for inet connector
 #Needs adjustment for different subnets
 
-iface=$(ip addr |grep  $dcip3 | awk '{print $NF}')
-
+iface=$(ifconfig | grep -B1 "$dcip3" | head -n1 |sed 's/:.*//')
 
